@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AngularJS • TodoMVC</title>
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body>
+<body ng-app="todoApp">
   <section class="todoapp">
     <header class="header">
       <h1>todos</h1>
@@ -64,6 +64,10 @@
     <p>Created by <a href="https://lean-stack.de">Micha Alt</a></p>
     <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
   </footer>
+
+  <script src="js/libs/angular.js"></script>
+  <script src="js/libs/angular-route.js"></script>
+  <script src="js/app.module.js"></script>
 </body>
 
 </html>
