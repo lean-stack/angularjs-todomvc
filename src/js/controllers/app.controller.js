@@ -15,9 +15,11 @@
 
     // Event Handlers
     $scope.create = function() {
-      var todo = todoStore.addTodo($scope.title);
-      $scope.todos.push(todo);
-      $scope.title = '';
+      if ($scope.title.length > 0) {
+        var todo = todoStore.addTodo($scope.title);
+        $scope.todos.push(todo);
+        $scope.title = '';
+      }
     }
   }
 
