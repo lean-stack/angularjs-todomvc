@@ -9,7 +9,7 @@
     "browser-sync": "^2.26.7",
     "cpy-cli": "^3.1.1",
     "npm-run-all": "^4.1.5",
-    "todomvc-e2e-cy-testsuite": "^1.0.1"
+    "todomvc-e2e-cy-testsuite": "^1.0.2"
   },
   "scripts": {
     "start": "browser-sync start -s src -w --single",
