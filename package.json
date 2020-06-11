@@ -1,6 +1,8 @@
 {
     "private": true,
     "dependencies": {
+        "angular": "^1.8.0",
+        "angular-route": "^1.8.0",
         "todomvc-app-css": "^2.3.0"
     },
     "devDependencies": {
@@ -11,6 +13,7 @@
     "scripts": {
         "start": "browser-sync start -s src -w --single",
         "postinstall": "npm-run-all copy:*",
-        "copy:styles": "cpy node_modules/todomvc-app-css/index.css --rename styles.css src/css"
+        "copy:styles": "cpy node_modules/todomvc-app-css/index.css --rename styles.css src/css",
+        "copy:libs": "cpy 'node_modules/{angular,angular-*}/{*.js,*.js.map}' '!**/index.js' src/js/libs"
     }
 }
