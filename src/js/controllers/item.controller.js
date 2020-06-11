@@ -15,6 +15,7 @@
     // Event Handlers
     vm.toggle = function() {
       todoStore.updateTodo(vm.todo.id, { completed: !vm.todo.completed });
+      vm.todo.completed = !vm.todo.completed;
     };
     vm.beginEdit = function() {
       vm.editMode = true;

@@ -6,6 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AngularJS • TodoMVC</title>
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    [ng-cloak] {
+      display: none !important;
+    }
+  </style>
 </head>
 
 <body ng-app="todoApp">
@@ -18,9 +23,12 @@
     </header>
     <!-- This section should be hidden by default and shown when there are todos -->
     <section class="main" ng-class="{ hidden: todos.length === 0 }">
-      <input id="toggle-all" class="toggle-all" type="checkbox">
+      <input id="toggle-all" class="toggle-all" type="checkbox"
+        ng-model="allCompleted"
+        ng-change="syncAll()"
+      >
       <label for="toggle-all">Mark all as complete</label>
-      <ul class="todo-list">
+      <ul class="todo-list" ng-cloak>
         <!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
         <li ng-repeat="todo in todos track by todo.id"
           ng-controller="ItemCtrl as vm"
@@ -28,8 +36,8 @@
         >
           <div class="view">
             <input class="toggle" type="checkbox"
-              ng-model="vm.todo.completed"
-              ng-change="vm.toggle()"
+              ng-checked="vm.todo.completed"
+              ng-on-change="vm.toggle()"
             >
             <label ng-dblclick="vm.beginEdit()">{{ vm.todo.title }}</label>
             <button ng-click="remove(vm.todo)" class="destroy"></button>
