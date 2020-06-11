@@ -23,22 +23,31 @@
 
   TodoStore.prototype.updateTodo = function (id, changes) {
     var todos = this.getAll();
-    var todo = findTodo(todos, id);
+    var todoIx = findTodoIx(todos, id);
 
-    angular.extend(todo, changes);
+    angular.extend(todos[todoIx], changes);
 
     localStorage.setItem('todos', JSON.stringify(todos));
-    return todo;
+    return todos[todoIx];
   }
 
-  function findTodo(todos, id) {
-    var todo = null;
+  TodoStore.prototype.removeTodo = function (id) {
+    var todos = this.getAll();
+    var todoIx = findTodoIx(todos, id);
+
+    todos.splice(todoIx, 1);
+
+    localStorage.setItem('todos', JSON.stringify(todos));
+  };
+
+  function findTodoIx(todos, id) {
+    var todoIx = -1;
     for (var ix = 0; ix < todos.length; ix++) {
       if (todos[ix].id === id) {
-        todo = todos[ix];
+        todoIx = ix;
         break;
       }
     }
-    return todo;
+    return todoIx;
   }
 })();

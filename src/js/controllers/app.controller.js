@@ -21,6 +21,11 @@
         $scope.title = '';
       }
     }
+    $scope.remove = function(todo) {
+      todoStore.removeTodo(todo.id);
+      $scope.todos.splice($scope.todos.indexOf(todo), 1);
+    };
+
   }
 
 })();
