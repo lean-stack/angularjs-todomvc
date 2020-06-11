@@ -9,7 +9,7 @@
 </head>
 
 <body ng-app="todoApp">
-  <section class="todoapp">
+  <section class="todoapp" ng-controller="AppCtrl">
     <header class="header">
       <h1>todos</h1>
       <input class="new-todo" placeholder="What needs to be done?" autofocus>
@@ -68,6 +68,7 @@
   <script src="js/libs/angular.js"></script>
   <script src="js/libs/angular-route.js"></script>
   <script src="js/app.module.js"></script>
+  <script src="js/controllers/app.controller.js"></script>
 </body>
 
 </html>
