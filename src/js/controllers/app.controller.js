@@ -17,6 +17,7 @@
     $scope.create = function() {
       var todo = todoStore.addTodo($scope.title);
       $scope.todos.push(todo);
+      $scope.title = '';
     }
   }
 
