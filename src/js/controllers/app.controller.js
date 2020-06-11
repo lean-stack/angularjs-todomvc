@@ -15,6 +15,13 @@
     $scope.allCompleted = false;
 
     // Calculated Properties
+    $scope.activeCount = function () {
+      return $scope.todos.reduce( function (count, t) {
+        return t.completed ? count : count + 1;
+      }, 0);
+    }
+
+    // Watching
     $scope.$watch(function () {
       for( var ix = 0; ix < $scope.todos.length; ix++) {
         if( $scope.todos[ix].completed === false) {
