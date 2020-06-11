@@ -8,12 +8,15 @@
   "devDependencies": {
     "browser-sync": "^2.26.7",
     "cpy-cli": "^3.1.1",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "todomvc-e2e-cy-testsuite": "^1.0.1"
   },
   "scripts": {
     "start": "browser-sync start -s src -w --single",
     "postinstall": "npm-run-all copy:*",
     "copy:styles": "cpy node_modules/todomvc-app-css/index.css --rename styles.css src/css",
-    "copy:libs": "cpy 'node_modules/{angular,angular-*}/{*.js,*.js.map}' '!**/index.js' src/js/libs"
+    "copy:libs": "cpy 'node_modules/{angular,angular-*}/{*.js,*.js.map}' '!**/index.js' src/js/libs",
+    "test": "todomvc-e2e-cy-testsuite headless --port 3000",
+    "test:ui": "todomvc-e2e-cy-testsuite ui --port 3000"
   }
 }
