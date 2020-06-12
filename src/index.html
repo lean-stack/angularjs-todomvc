@@ -14,70 +14,7 @@
 </head>
 
 <body ng-app="todoApp">
-  <section class="todoapp" ng-controller="AppCtrl">
-    <header class="header">
-      <h1>todos</h1>
-      <form ng-submit="create()">
-        <input ng-model="title" class="new-todo" placeholder="What needs to be done?">
-      </form>
-    </header>
-    <!-- This section should be hidden by default and shown when there are todos -->
-    <section class="main" ng-class="{ hidden: todos.length === 0 }">
-      <input id="toggle-all" class="toggle-all" type="checkbox"
-        ng-model="allCompleted"
-        ng-change="syncAll()"
-      >
-      <label for="toggle-all">Mark all as complete</label>
-      <ul class="todo-list" ng-cloak>
-        <!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
-        <li ng-repeat="todo in todos track by todo.id"
-          ng-controller="ItemCtrl as vm"
-          ng-class="{ editing: vm.editMode, completed: vm.todo.completed }"
-        >
-          <div class="view">
-            <input class="toggle" type="checkbox"
-              ng-checked="vm.todo.completed"
-              ng-on-change="vm.toggle()"
-            >
-            <label ng-dblclick="vm.beginEdit()">{{ vm.todo.title }}</label>
-            <button ng-click="remove(vm.todo)" class="destroy"></button>
-          </div>
-          <input class="edit"
-            ng-model="vm.editText"
-            ng-blur="vm.endEdit()"
-            ng-keyup="vm.handleKey($event)"
-          >
-        </li>
-      </ul>
-    </section>
-    <footer class="footer" ng-class="{ hidden: todos.length === 0 }">
-      <!-- This should be `0 items left` by default -->
-      <span class="todo-count">
-        <strong>{{ activeCount() }}</strong>
-        <ng-pluralize count="activeCount()"
-                 when="{'one': 'item left','other': 'items left'}">
-        </ng-pluralize>
-      </span>
-      <!-- Remove this if you don't implement routing -->
-      <ul class="filters">
-        <li>
-          <a class="selected" href="#/">All</a>
-        </li>
-        <li>
-          <a href="#/active">Active</a>
-        </li>
-        <li>
-          <a href="#/completed">Completed</a>
-        </li>
-      </ul>
-      <button class="clear-completed"
-        ng-class="{ hidden: allActive() }"
-        ng-click="clearCompleted()"
-      >
-        Clear completed
-      </button>
-    </footer>
-  </section>
+  <ng-view></ng-view>
   <footer class="info">
     <p>Double-click to edit a todo</p>
     <p>Created by <a href="https://lean-stack.de">Micha Alt</a></p>
@@ -88,6 +25,7 @@
   <script src="js/libs/angular.js"></script>
   <script src="js/libs/angular-route.js"></script>
   <script src="js/app.module.js"></script>
+  <script src="js/app.routing.js"></script>
   <script src="js/controllers/app.controller.js"></script>
   <script src="js/controllers/item.controller.js"></script>
   <script src="js/services/todo-store.service.js"></script>

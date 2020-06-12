@@ -3,16 +3,28 @@
   angular.module('todoApp')
     .controller('AppCtrl', AppController);
 
-  function AppController($scope, todoStore) {
+  function AppController($scope, todoStore, filter) {
 
+    console.log(filter);
     // TODO: Not best practice, better use a directive
     // We need to focus, cause auto-focussing is blocked by browser due to anchor routes
     document.querySelector('.new-todo').focus();
 
     // Properties
     $scope.title = '';
+    $scope.filter = filter;
     $scope.todos = todoStore.getAll();
     $scope.allCompleted = false;
+
+    if (filter !== 0) {
+      $scope.todos = $scope.todos.filter(function (t) {
+        if (filter === 1) {
+          return !t.completed;
+        } else {
+          return t.completed;
+        }
+      });
+    }
 
     // Calculated Properties
     $scope.activeCount = function () {
