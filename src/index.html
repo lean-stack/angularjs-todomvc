@@ -70,8 +70,12 @@
           <a href="#/completed">Completed</a>
         </li>
       </ul>
-      <!-- Hidden if no completed items are left ↓ -->
-      <button class="clear-completed">Clear completed</button>
+      <button class="clear-completed"
+        ng-class="{ hidden: allActive() }"
+        ng-click="clearCompleted()"
+      >
+        Clear completed
+      </button>
     </footer>
   </section>
   <footer class="info">

@@ -20,6 +20,14 @@
         return t.completed ? count : count + 1;
       }, 0);
     }
+    $scope.allActive = function () {
+      for( var ix = 0; ix < $scope.todos.length; ix++) {
+        if( $scope.todos[ix].completed === true) {
+          return false;
+        }
+      }
+      return true;
+    }
 
     // Watching
     $scope.$watch(function () {
@@ -48,6 +56,14 @@
         todo.completed = $scope.allCompleted;
         todoStore.updateTodo(todo.id, { completed: $scope.allCompleted });
       });
+    }
+    $scope.clearCompleted = function() {
+      angular.forEach($scope.todos, function (todo) {
+        if (todo.completed) {
+          todoStore.removeTodo(todo.id);
+        }
+      });
+      $scope.todos = $scope.todos.filter(function (t) { return !t.completed; });
     }
   }
 
