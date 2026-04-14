@@ -1,6 +1,5 @@
-(function(){
 
-  angular.module('todoApp')
+  angular.module('app')
     .controller('ItemCtrl', ItemController);
 
   function ItemController($scope, $element, todoStore) {
@@ -49,5 +48,3 @@
       }
     };
   }
-
-})();

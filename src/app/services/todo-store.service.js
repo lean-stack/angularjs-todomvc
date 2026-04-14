@@ -1,6 +1,5 @@
-(function(){
 
-  angular.module('todoApp')
+  angular.module('app')
     .service('todoStore', TodoStore);
 
   function TodoStore() {}
@@ -50,4 +49,3 @@
     }
     return todoIx;
   }
-})();

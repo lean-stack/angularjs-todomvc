@@ -3,17 +3,14 @@
   "dependencies": {
     "angular": "^1.8.0",
     "angular-route": "^1.8.0",
-    "jquery": "^3.5.1",
     "todomvc-app-css": "^2.3.0"
   },
   "devDependencies": {
-    "http-server": "^0.12.3",
     "todomvc-e2e-cy-testsuite": "^1.0.5",
     "vite": "^8.0.8"
   },
   "scripts": {
     "dev": "vite",
-    "start": "browser-sync start -s src -w --single",
     "test": "run-p test:*",
     "test:server": "http-server src --port 4200",
     "test:suite": "todomvc-e2e-cy-testsuite ui"
